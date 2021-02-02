@@ -16,8 +16,17 @@ label {
   }
 }
 
-td, th {
-  border: 1px solid black;
+.valor {
+  width: 140px;
+  text-align: right;
+}
+
+.data {
+  width: 120px;
   text-align: center;
 }
 
+.acoes {
+  width: 120px;
+  text-align: center;
+}
