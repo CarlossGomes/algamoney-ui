@@ -1,0 +1,14 @@
+<div class="container">
+  <p-megaMenu styleClass="navbar" (click)="display = true">
+    <ng-template pTemplate="start">
+      <button pButton (click)="display = true" icon="pi pi-bars"></button>
+    </ng-template>
+  </p-megaMenu>
+</div>
+
+<p-sidebar styleClass="sidebar-menu" [(visible)]="display" position="right" [baseZIndex]="10000">
+  <li class="navbar-usuario">José da Silva</li>
+  <li class="navbar-menuitem"><a href="#">Lançamentos</a></li>
+  <li class="navbar-menuitem"><a href="#">Pessoas</a></li>
+  <li class="navbar-menuitem"><a href="#">Logout</a></li>
+</p-sidebar>
