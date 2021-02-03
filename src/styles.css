@@ -69,3 +69,13 @@ label {
 .navbar-button {
   color: red;
 }
+
+.status-item a{
+  color: black;
+  text-decoration: none;
+}
+
+.header-table {
+  text-align: center;
+  color: red;
+}

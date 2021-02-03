@@ -11,6 +11,7 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarModule } from 'primeng/sidebar';
 import {MegaMenuModule} from 'primeng/megamenu';
+import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesquisar-pessoa.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MegaMenuModule} from 'primeng/megamenu';
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
+    PesquisarPessoaComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -27,7 +29,7 @@ import {MegaMenuModule} from 'primeng/megamenu';
     TableModule,
     MegaMenuModule,
     TooltipModule,
-    SidebarModule
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
