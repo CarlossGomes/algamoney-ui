@@ -1,3 +1,4 @@
+import { CadastroPessoaComponent } from './pessoa/pages/cadastro-pessoa/cadastro-pessoa.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +27,8 @@ import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesqui
     LancamentosPesquisaComponent,
     NavbarComponent,
     PesquisarPessoaComponent,
-    LancamentoCadastroComponent
+    LancamentoCadastroComponent,
+    CadastroPessoaComponent
   ],
   imports: [
     BrowserAnimationsModule,
