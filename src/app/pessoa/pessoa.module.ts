@@ -5,11 +5,12 @@ import { PesquisarPessoaComponent } from './pages/pesquisar-pessoa/pesquisar-pes
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { CadastroPessoaComponent } from './pages/cadastro-pessoa/cadastro-pessoa.component';
 
 
 
 @NgModule({
-  declarations: [PesquisarPessoaComponent],
+  declarations: [PesquisarPessoaComponent, CadastroPessoaComponent],
   imports: [
     CommonModule,
     InputTextModule,
