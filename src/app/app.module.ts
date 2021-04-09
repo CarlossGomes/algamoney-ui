@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarModule } from 'primeng/sidebar';
 import {MegaMenuModule} from 'primeng/megamenu';
 import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesquisar-pessoa.component';
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesqui
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    PesquisarPessoaComponent
+    PesquisarPessoaComponent,
+    LancamentoCadastroComponent
   ],
   imports: [
     BrowserAnimationsModule,

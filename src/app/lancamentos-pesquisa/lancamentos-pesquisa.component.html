@@ -43,8 +43,8 @@
           <tr>
             <td>{{lancamento.tipo}}</td>
             <td>{{lancamento.descricao}}</td>
-            <td>{{lancamento.dataVencimento}}</td>
-            <td>{{lancamento.dataPagamento}}</td>
+            <td>{{lancamento.dataVencimento | date: 'dd/MM/y'}}</td>
+            <td>{{lancamento.dataPagamento | date: 'dd/MM/y'}}</td>
             <td [ngStyle]="{color: lancamento.tipo === 'DESPESA' ? 'red' :'blue'}">{{lancamento.valor | currency: 'BRL'
               }}</td>
 
