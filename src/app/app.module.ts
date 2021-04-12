@@ -18,8 +18,9 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesquisar-pessoa.component';
-
-
+import { InputMaskModule } from 'primeng/inputmask';
+import { FormsModule } from '@angular/forms';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,13 @@ import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesqui
     NavbarComponent,
     PesquisarPessoaComponent,
     LancamentoCadastroComponent,
-    CadastroPessoaComponent
+    CadastroPessoaComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     InputTextModule,
     ButtonModule,
     TableModule,
@@ -44,6 +47,7 @@ import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesqui
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
+    InputMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

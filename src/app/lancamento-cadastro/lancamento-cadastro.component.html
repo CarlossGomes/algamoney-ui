@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form autocomplete="off" #lancamentoForm="ngForm" >
 
     <div class="p-grid">
       <div class="p-col-12">
@@ -12,7 +12,8 @@
 
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+        <p-calendar name="vencimento" dateFormat="dd/mm/yy" required #vencimento="ngModel" ngModel></p-calendar>
+        <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
@@ -22,22 +23,32 @@
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Descrição</label>
-        <input pInputText type="text">
+        <input pInputText type="text" name="descricao" #descricao="ngModel" required minlength="5" ngModel>
+        <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+        <app-message [control]="descricao" error="minlength"
+          text="Mínimo de {{descricao.errors?.minlength?.requiredLength}} caracteres"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">
         <label>Valor</label>
-        <p-inputNumber mode="currency" currency="BRL" locale="pt-BR" placeholder="0,00"></p-inputNumber>
+        <p-inputNumber name="valor" mode="currency" currency="BRL" locale="pt-BR" placeholder="0,00" #valor="ngModel"
+          #valor="ngModel" required ngModel>
+        </p-inputNumber>
+        <app-message [control]="valor" error="required" text="Informe um valor"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+        <p-dropdown [options]="categorias" name="dropCategorias" placeholder="Selecione" #dropCategorias="ngModel"
+          required ngModel></p-dropdown>
+        <app-message [control]="dropCategorias" error="required" text="Informe uma categoria"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Pessoa</label>
-        <p-dropdown [options]="pessoas" [filter]=true placeholder="Selecione"></p-dropdown>
+        <p-dropdown [options]="pessoas" name="dropPessoas" [filter]=true placeholder="Selecione" #dropPessoas="ngModel"
+          required ngModel></p-dropdown>
+        <app-message [control]="dropPessoas" error="required" text="Informe uma pessoa"></app-message>
       </div>
 
       <div class="p-col-12 p-fluid">
@@ -45,11 +56,10 @@
         <textarea pInputTextarea rows="3"></textarea>
       </div>
       <div class="p-col-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm?.invalid"></button>
         <button pButton type="button" label="Novo" class="p-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>
-
     </div>
 
   </form>

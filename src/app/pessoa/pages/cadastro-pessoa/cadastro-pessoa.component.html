@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #cadastroPForm="ngForm" >
 
     <div class="p-grid">
       <div class="p-col-12">
@@ -8,47 +8,56 @@
 
       <div class="p-col-12 p-fluid">
         <label>Nome</label>
-        <input pInputText type="text">
+        <input name="nome" pInputText type="text" #nome="ngModel" minlength="5" required ngModel>
+        <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{nome.errors?.minlength?.requiredLength}} caracteres"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Logradouro</label>
-        <input pInputText type="text">
+        <input name="logradouro" pInputText type="text" #logradouro="ngModel" required ngModel>
+        <app-message [control]="logradouro" error="required" text="Informe o logradouro"></app-message>
       </div>
 
       <div class="p-col-12 p-md-3 p-fluid">
         <label>Número</label>
-        <input pInputText type="text">
+        <input name="numero" pInputText type="text" #numero="ngModel" required ngModel>
+        <app-message [control]="numero" error="required" text="Informe o número"></app-message>
       </div>
 
       <div class="p-col-12 p-md-4 p-fluid">
         <label>Complemento</label>
-        <input pInputText type="text">
+        <input name="complemento" pInputText type="text" ngModel>
       </div>
 
       <div class="p-col-12 p-md-4 p-fluid">
         <label>Bairro</label>
-        <input pInputText type="text">
+        <input name="bairro" pInputText type="text" #bairro="ngModel" required ngModel>
+        <app-message [control]="bairro" error="required" text="Informe o bairro"></app-message>
       </div>
 
       <div class="p-col-12 p-md-4 p-fluid">
         <label>CEP</label>
-        <input pInputText type="text">
+        <p-inputMask name="cep" [(ngModel)]="cep" mask="99.999-999" placeholder="12.345-678" #cep1="ngModel" required></p-inputMask>
+        <app-message [control]="cep1" error="required" text="Informe o CEP"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Cidade</label>
-        <input pInputText type="text">
+        <input name="cidade" pInputText type="text" #cidade="ngModel" required ngModel>
+        <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Estado</label>
-        <input pInputText type="text">
+        <input name="estado" pInputText type="text" #estado="ngModel" required ngModel>
+        <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
       </div>
 
 
       <div class="p-col-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="cadastroPForm.invalid"></button>
         <button pButton type="button" label="Novo" class="p-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>
