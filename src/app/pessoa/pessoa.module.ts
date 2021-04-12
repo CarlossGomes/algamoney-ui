@@ -1,25 +1,34 @@
+import { SharedModule } from './../shared/shared.module';
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { CadastroPessoaComponent } from './pages/cadastro-pessoa/cadastro-pessoa.component';
 import { PesquisarPessoaComponent } from './pages/pesquisar-pessoa/pesquisar-pessoa.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [PesquisarPessoaComponent, CadastroPessoaComponent],
+  declarations: [
+    PesquisarPessoaComponent,
+    CadastroPessoaComponent,
+  ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
     InputTextModule,
     ButtonModule,
     TooltipModule,
-    FormsModule
+    TableModule,
+    InputMaskModule,
+    SharedModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports:[
+    CadastroPessoaComponent,
+    PesquisarPessoaComponent,
+  ]
 })
 export class PessoaModule { }
