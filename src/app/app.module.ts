@@ -1,10 +1,11 @@
-import { CadastroPessoaComponent } from './pessoa/pages/cadastro-pessoa/cadastro-pessoa.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -14,13 +15,13 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { AppComponent } from './app.component';
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { LancamentoCadastroComponent } from './lancamento/pages/lancamento-cadastro/lancamento-cadastro.component';
+import { LancamentosPesquisaComponent } from './lancamento/pages/lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { CadastroPessoaComponent } from './pessoa/pages/cadastro-pessoa/cadastro-pessoa.component';
 import { PesquisarPessoaComponent } from './pessoa/pages/pesquisar-pessoa/pesquisar-pessoa.component';
-import { InputMaskModule } from 'primeng/inputmask';
-import { FormsModule } from '@angular/forms';
-import { MessageComponent } from './message/message.component';
+import { MessageComponent } from './shared/message/message.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { LancamentosGridComponent } from './lancamento/pages/lancamentos-grid/lancamentos-grid.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MessageComponent } from './message/message.component';
     LancamentoCadastroComponent,
     CadastroPessoaComponent,
     MessageComponent,
+    LancamentosGridComponent,
   ],
   imports: [
     BrowserAnimationsModule,
