@@ -1,6 +1,12 @@
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { URLSearchParams } from 'url';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Header } from 'primeng/api';
+
+export interface LancamentoFiltro {
+  descricao: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +17,18 @@ export class LancamentoService {
 
   constructor(private http: HttpClient) { }
 
-  public httpOptionsAuthorization = {
-    headers: new HttpHeaders(
-      {
-        'Authorization': 'Basic ' + 'YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-      }
-    )
-  }
+  public pesquisar(filtro: any): Observable<any> {
+
+    var params = new HttpParams();
+    const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
 
-  public pesquisar(): Observable<any> {
-    return this.http.get(`${this.lancamentosUrl}?resumo`, this.httpOptionsAuthorization)
+    if (filtro.descricao) {
+      console.log("parte 1")
+      params.set('descricao', filtro.descricao);
+    }
+    return this.http.get(`${this.lancamentosUrl}?resumo`, {headers, params});
+
   }
 
 }
