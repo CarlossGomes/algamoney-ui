@@ -1,3 +1,4 @@
+import { LancamentoService } from './../../services/lancamento.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,21 +6,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lancamentos-pesquisa.component.html',
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
-export class LancamentosPesquisaComponent {
+export class LancamentosPesquisaComponent implements OnInit {
 
-  public lancamentos = [
-    {
-      tipo: 'DESPESA', descricao: 'Compra de pão', dataVencimento: new Date(2017, 6, 30),
-      dataPagamento: null, valor: 4.55, pessoa: 'Padaria do José'
-    },
-    {
-      tipo: 'RECEITA', descricao: 'Venda de software', dataVencimento: new Date(2017, 6, 10),
-      dataPagamento: new Date(2017, 6, 9), valor: 80000, pessoa: 'Atacado Brasil'
-    },
-    {
-      tipo: 'DESPESA', descricao: 'Impostos', dataVencimento: new Date(2017, 7, 200),
-      dataPagamento: null, valor: 14312, pessoa: 'Ministério da Fazenda'
-    }
-  ]
+  public lancamentos = [];
+
+  constructor(private lancamentoService: LancamentoService) { }
+
+  ngOnInit(): void {
+    this.pesquisar();
+  }
+
+  public pesquisar(): void {
+    this.lancamentoService.pesquisar().subscribe(
+      response => {
+        this.lancamentos = response.content;
+      }
+    )
+  }
 
 }

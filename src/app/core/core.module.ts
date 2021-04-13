@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { SidebarModule } from 'primeng/sidebar';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     CommonModule,
     MegaMenuModule,
     SidebarModule,
+    ButtonModule
   ],
   exports:[
     NavbarComponent

@@ -1,7 +1,11 @@
 <div class="container">
-  <p-megaMenu styleClass="navbar" (click)="display = true">
-    <button pButton type="button" (click)="display = true" icon="pi pi-bars"></button>
-  </p-megaMenu>
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-megaMenu styleClass="navbar" (click)="display = true">
+        <button pButton type="button" (click)="display = true" icon="pi pi-bars"></button>
+      </p-megaMenu>
+    </div>
+  </div>
 </div>
 
 <p-sidebar styleClass="sidebar-menu" [(visible)]="display" position="right" [baseZIndex]="10000">
