@@ -1,4 +1,4 @@
-import { LancamentoService } from './../../services/lancamento.service';
+import { LancamentoFiltro, LancamentoService } from './../../services/lancamento.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
-  descricao: string;
+  filtro = new LancamentoFiltro();
   public lancamentos = [];
 
   constructor(private lancamentoService: LancamentoService) { }
@@ -18,9 +18,10 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   public pesquisar(): void {
-    this.lancamentoService.pesquisar({ descricao: this.descricao }).subscribe(
+    this.lancamentoService.pesquisar(this.filtro).subscribe(
       response => {
         this.lancamentos = response.content;
+        console.log(response.totalElements);
       }
     )
   }
