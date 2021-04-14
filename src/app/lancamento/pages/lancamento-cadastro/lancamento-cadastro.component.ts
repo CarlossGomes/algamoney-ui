@@ -1,3 +1,7 @@
+import { MessageService } from 'primeng/api';
+import { LancamentoService } from './../../services/lancamento.service';
+import { FormControl } from '@angular/forms';
+import { Lancamento } from './../../../core/model/model';
 import { PessoaService } from './../../../pessoa/services/pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { CategoriaService } from './../../../categoria/services/categoria.service';
@@ -16,16 +20,30 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   categorias = [];
-
   pessoas = [];
+  lancamento = new Lancamento();
 
   constructor(private categoriaService: CategoriaService,
               private pessoaService: PessoaService,
+              private lancamentoService: LancamentoService,
+              private messageService: MessageService,
               private errorHandler: ErrorHandlerService) { }
 
   ngOnInit(): void {
     this.carregarCategorias();
     this.carregarPessoas();
+  }
+
+  public salvar(form: FormControl): void {
+    this.lancamentoService.adicionar(this.lancamento).subscribe(
+      () => {
+        this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Lançamento adicionado com sucesso!' });
+        form.reset();
+        this.lancamento = new Lancamento();
+      }, erro => {
+        this.errorHandler.handle(erro);
+      }
+    );
   }
 
   public carregarCategorias(): object {
@@ -42,7 +60,6 @@ export class LancamentoCadastroComponent implements OnInit {
     return this.pessoaService.listarTodas().subscribe(
       response => {
         this.pessoas = response.content.map(p => ({ label: p.nome, value: p.codigo }));
-        console.log(this.pessoas)
       }, erro => {
         this.errorHandler.handle(erro);
       }
