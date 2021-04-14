@@ -34,7 +34,7 @@
       <div class="p-col-12">
         <p-table styleClass="p-datatable-striped p-datatable-gridlines" [value]="lancamentos" [responsive]="true"
           [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
-          (onLazyLoad)="aoMudarPagina($event)">
+          (onLazyLoad)="aoMudarPagina($event)" #tabela>
           <ng-template pTemplate="header">
             <tr>
               <th>Tipo</th>
@@ -59,7 +59,7 @@
                   pTooltip="Editar" tooltipPosition="top">
                 </button>
                 <button pButton tittle="Excluir" alt="Excluir" type="button" icon="fa fa-trash" class="p-mb-2"
-                  pTooltip="Excluir" tooltipPosition="top">
+                  pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lancamento)">
                 </button>
               </td>
             </tr>
@@ -82,3 +82,4 @@
     </div>
 
   </div>
+<p-toast></p-toast>

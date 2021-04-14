@@ -14,7 +14,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { LancamentoCadastroComponent } from './pages/lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './pages/lancamentos-pesquisa/lancamentos-pesquisa.component';
-
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import { LancamentosPesquisaComponent } from './pages/lancamentos-pesquisa/lanca
     DropdownModule,
     InputNumberModule,
     SharedModule,
+    ToastModule,
   ],
   exports: [
     LancamentoCadastroComponent,

@@ -8,6 +8,7 @@ import { LancamentoModule } from './lancamento/lancamento.module';
 import { PessoaService } from './pessoa/services/pessoa.service';
 import { LancamentoService } from './lancamento/services/lancamento.service';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { PessoaModule } from './pessoa/pessoa.module';
     LancamentoModule,
     PessoaModule
   ],
-  providers: [LancamentoService, PessoaService],
+  providers: [LancamentoService, PessoaService, MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
