@@ -16,9 +16,9 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid: { first: number; };
 
   constructor(private lancamentoService: LancamentoService,
-    private errorHandler: ErrorHandlerService,
-    private messageService: MessageService,
-    private confirmationService: ConfirmationService) { }
+              private errorHandler: ErrorHandlerService,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
   }
@@ -35,12 +35,12 @@ export class LancamentosPesquisaComponent implements OnInit {
     );
   }
 
-  public aoMudarPagina(event: LazyLoadEvent) {
+  public aoMudarPagina(event: LazyLoadEvent): void {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
 
-  public confirmarExclusao(lancamento: any) {
+  public confirmarExclusao(lancamento: any): void {
     this.confirmationService.confirm({
       message: 'Tem certeza que deseja excluir?',
       header: 'Confirmação',
@@ -51,7 +51,7 @@ export class LancamentosPesquisaComponent implements OnInit {
     });
   }
 
-  public excluir(lancamento: any) {
+  public excluir(lancamento: any): void {
     this.lancamentoService.excluir(lancamento.codigo).subscribe(
       () => {
         if (this.grid.first === 0) {

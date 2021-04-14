@@ -43,8 +43,8 @@ export class PessoaService {
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers });
   }
 
-  public alterarStatus(codigo: any, ativo: boolean) {
-    const headers = new HttpHeaders({ 'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==', 'Content-Type': 'application/json' });
+  public alterarStatus(codigo: any, ativo: boolean): Observable<any> {
+    const headers = new HttpHeaders({ Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==', 'Content-Type': 'application/json' });
     return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers });
   }
 }

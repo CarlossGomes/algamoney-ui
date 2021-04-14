@@ -16,9 +16,9 @@ export class PesquisarPessoaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(private pessoaService: PessoaService,
-    private errorHandler: ErrorHandlerService,
-    private messageService: MessageService,
-    private confirmationService: ConfirmationService) { }
+              private errorHandler: ErrorHandlerService,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +37,7 @@ export class PesquisarPessoaComponent implements OnInit {
     );
   }
 
-  public listarTodas() {
+  public listarTodas(): void {
     this.pessoaService.listarTodas().subscribe(
       response => {
         this.pessoas = response.content;
@@ -48,12 +48,12 @@ export class PesquisarPessoaComponent implements OnInit {
     );
   }
 
-  public aoMudarPagina(event: LazyLoadEvent) {
+  public aoMudarPagina(event: LazyLoadEvent): void {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
 
-  public confirmarExclusao(pessoa: any) {
+  public confirmarExclusao(pessoa: any): void {
     this.confirmationService.confirm({
       message: 'Tem certeza que deseja excluir?',
       header: 'Confirmação',
@@ -64,7 +64,7 @@ export class PesquisarPessoaComponent implements OnInit {
     });
   }
 
-  public excluir(pessoa: any) {
+  public excluir(pessoa: any): void {
     this.pessoaService.excluir(pessoa.codigo).subscribe(
       () => {
         if (this.grid.first === 0) {
@@ -79,12 +79,14 @@ export class PesquisarPessoaComponent implements OnInit {
       });
   }
 
-  public alterarStatus(pessoa: any) {
+  public alterarStatus(pessoa: any): void {
 
     this.pessoaService.alterarStatus(pessoa.codigo, pessoa.ativo === true ? false : true).subscribe(
       () => {
         this.grid.first = 0;
         this.pesquisar();
+      }, erro => {
+        this.errorHandler.handle(erro);
       }
     );
   }
