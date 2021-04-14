@@ -1,26 +1,27 @@
 <div class="container">
 
   <div class="p-grid">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="p-col-12">
+        <h1>Pessoas</h1>
+      </div>
 
-    <div class="p-col-12">
-      <h1>Pessoas</h1>
-    </div>
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+      </div>
 
-    <div class="p-col-12 p-fluid">
-      <label>Nome</label>
-      <input pInputText type="text">
-    </div>
-
-    <div class="p-col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
-
+      <div class="p-col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
   </div>
 
   <div class="p-grid">
     <div class="p-col-12">
-      <p-table styleClass="p-datatable-striped p-datatable-gridlines" [value]="pessoas" [paginator]="true" [rows]="10"
-        [responsive]="true">
+      <p-table styleClass="p-datatable-striped p-datatable-gridlines" [value]="pessoas" [responsive]="true"
+        [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarPagina($event)">
         <ng-template pTemplate="header">
           <tr>
             <th>Nome</th>
@@ -33,10 +34,10 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td>{{pessoa.nome}}</td>
-            <td>{{pessoa.cidade}}</td>
-            <td>{{pessoa.estado}}</td>
-            <td class="status-item"><a href="#" [pTooltip]="pessoa.status === true ? 'Desativar' :'Ativar'"
-                tooltipPosition="top">{{pessoa.status === true ? "Ativo" : "Inativo"}}</a></td>
+            <td>{{pessoa.endereco.cidade}}</td>
+            <td>{{pessoa.endereco.estado}}</td>
+            <td class="status-item"><a href="#" [pTooltip]="pessoa.ativo === true ? 'Desativar' :'Ativar'"
+                tooltipPosition="top">{{pessoa.ativo === true ? "Ativo" : "Inativo"}}</a></td>
 
             <td>
               <button pButton tittle="Editar" alt="Editar" type="button" icon="fa fa-pencil" class="p-mr-2 p-mb-2"

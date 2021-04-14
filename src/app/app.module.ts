@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { LancamentoModule } from './lancamento/lancamento.module';
+import { PessoaService } from './pessoa/services/pessoa.service';
 import { LancamentoService } from './lancamento/services/lancamento.service';
 import { PessoaModule } from './pessoa/pessoa.module';
 
@@ -20,7 +21,7 @@ import { PessoaModule } from './pessoa/pessoa.module';
     LancamentoModule,
     PessoaModule
   ],
-  providers: [LancamentoService],
+  providers: [LancamentoService, PessoaService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
