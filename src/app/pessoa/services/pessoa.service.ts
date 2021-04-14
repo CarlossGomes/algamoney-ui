@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Pessoa } from 'src/app/core/model/model';
 
 export class PessoaFiltro {
   nome: string;
@@ -46,5 +47,10 @@ export class PessoaService {
   public alterarStatus(codigo: any, ativo: boolean): Observable<any> {
     const headers = new HttpHeaders({ Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==', 'Content-Type': 'application/json' });
     return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers });
+  }
+
+  public adicionar(pessoa: Pessoa): Observable<any> {
+    const headers = new HttpHeaders({ Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==', 'Content-Type': 'application/json' });
+    return this.http.post(this.pessoasUrl, pessoa, { headers });
   }
 }
