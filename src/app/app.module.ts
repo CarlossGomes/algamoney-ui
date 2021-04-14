@@ -8,7 +8,9 @@ import { LancamentoModule } from './lancamento/lancamento.module';
 import { PessoaService } from './pessoa/services/pessoa.service';
 import { LancamentoService } from './lancamento/services/lancamento.service';
 import { PessoaModule } from './pessoa/pessoa.module';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +22,15 @@ import { MessageService } from 'primeng/api';
     CoreModule,
     HttpClientModule,
     LancamentoModule,
-    PessoaModule
+    PessoaModule,
+    ConfirmDialogModule
   ],
-  providers: [LancamentoService, PessoaService, MessageService],
+  providers: [
+    LancamentoService,
+    PessoaService,
+    MessageService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
