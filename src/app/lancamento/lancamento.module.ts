@@ -1,5 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,10 +9,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
+import { SharedModule } from './../shared/shared.module';
 import { LancamentoCadastroComponent } from './pages/lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './pages/lancamentos-pesquisa/lancamentos-pesquisa.component';
-import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({

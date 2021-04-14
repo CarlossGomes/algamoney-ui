@@ -36,4 +36,15 @@ export class PessoaService {
     const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     return this.http.get(`${this.pessoasUrl}`, { headers });
   }
+
+  public excluir(codigo: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers });
+  }
+
+  public alterarStatus(codigo: any, ativo: boolean) {
+    const headers = new HttpHeaders({ 'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==', 'Content-Type': 'application/json' });
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers });
+  }
 }

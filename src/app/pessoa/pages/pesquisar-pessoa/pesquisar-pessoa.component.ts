@@ -1,7 +1,7 @@
-import { PessoaService } from './../../services/pessoa.service';
-import { Component, OnInit } from '@angular/core';
-import { PessoaFiltro } from '../../services/pessoa.service';
-import { LazyLoadEvent } from 'primeng/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { PessoaFiltro, PessoaService } from '../../services/pessoa.service';
 
 @Component({
   selector: 'app-pesquisar-pessoa',
@@ -10,12 +10,15 @@ import { LazyLoadEvent } from 'primeng/api';
 })
 export class PesquisarPessoaComponent implements OnInit {
 
-
   totalRegistros = 0;
   filtro = new PessoaFiltro();
   public pessoas = [];
+  @ViewChild('tabela') grid;
 
-  constructor(private pessoaService: PessoaService) { }
+  constructor(private pessoaService: PessoaService,
+    private errorHandler: ErrorHandlerService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +31,8 @@ export class PesquisarPessoaComponent implements OnInit {
         this.pessoas = response.content;
 
         this.totalRegistros = response.totalElements;
+      }, erro => {
+        this.errorHandler.handle(erro);
       }
     );
   }
@@ -37,6 +42,8 @@ export class PesquisarPessoaComponent implements OnInit {
       response => {
         this.pessoas = response.content;
         this.totalRegistros = response.totalElements;
+      }, erro => {
+        this.errorHandler.handle(erro);
       }
     );
   }
@@ -44,6 +51,42 @@ export class PesquisarPessoaComponent implements OnInit {
   public aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
+  }
+
+  public confirmarExclusao(pessoa: any) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      header: 'Confirmação',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.excluir(pessoa);
+      }
+    });
+  }
+
+  public excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.codigo).subscribe(
+      () => {
+        if (this.grid.first === 0) {
+          this.pesquisar();
+        } else {
+          this.grid.first = 0;
+          this.pesquisar();
+        }
+        this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Pessoa excluída com sucesso!' });
+      }, erro => {
+        this.errorHandler.handle(erro);
+      });
+  }
+
+  public alterarStatus(pessoa: any) {
+
+    this.pessoaService.alterarStatus(pessoa.codigo, pessoa.ativo === true ? false : true).subscribe(
+      () => {
+        this.grid.first = 0;
+        this.pesquisar();
+      }
+    );
   }
 
 }

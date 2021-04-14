@@ -24,11 +24,11 @@ registerLocaleData(localePt);
     MegaMenuModule,
     SidebarModule,
     ButtonModule,
-    ToastModule,
     ConfirmDialogModule
   ],
   exports: [
     NavbarComponent,
+    ConfirmDialogModule
   ],
   providers: [
     LancamentoService,

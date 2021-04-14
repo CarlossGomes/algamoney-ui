@@ -1,3 +1,4 @@
+import { ToastModule } from 'primeng/toast';
 import { SharedModule } from './../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,8 @@ import { PesquisarPessoaComponent } from './pages/pesquisar-pessoa/pesquisar-pes
     TooltipModule,
     TableModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    ToastModule
   ],
   exports:[
     CadastroPessoaComponent,

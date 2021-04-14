@@ -21,7 +21,7 @@
     <div class="p-col-12">
       <p-table styleClass="p-datatable-striped p-datatable-gridlines" [value]="pessoas" [responsive]="true"
         [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
-        (onLazyLoad)="aoMudarPagina($event)">
+        (onLazyLoad)="aoMudarPagina($event)" #tabela>
         <ng-template pTemplate="header">
           <tr>
             <th>Nome</th>
@@ -36,15 +36,16 @@
             <td>{{pessoa.nome}}</td>
             <td>{{pessoa.endereco.cidade}}</td>
             <td>{{pessoa.endereco.estado}}</td>
-            <td class="status-item"><a href="#" [pTooltip]="pessoa.ativo === true ? 'Desativar' :'Ativar'"
-                tooltipPosition="top">{{pessoa.ativo === true ? "Ativo" : "Inativo"}}</a></td>
+            <td class="status-item"><a (click)="alterarStatus(pessoa)"
+                [pTooltip]="pessoa.ativo === true ? 'Desativar' :'Ativar'" tooltipPosition="top">{{pessoa.ativo === true
+                ? "Ativo" : "Inativo"}}</a></td>
 
             <td>
               <button pButton tittle="Editar" alt="Editar" type="button" icon="fa fa-pencil" class="p-mr-2 p-mb-2"
                 pTooltip="Editar" tooltipPosition="top">
               </button>
               <button pButton tittle="Excluir" alt="Excluir" type="button" icon="fa fa-trash" class="p-mb-2"
-                pTooltip="Excluir" tooltipPosition="top">
+                pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)">
               </button>
 
             </td>
@@ -59,5 +60,5 @@
       <a pButton label="Nova Pessoa"></a>
     </div>
   </div>
-
 </div>
+<p-toast></p-toast>
